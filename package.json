@@ -1,7 +1,8 @@
 {
-  "engine": {
-    "node": "10.16.3",
-    "npm": "6.11.2"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "devDependencies": {
     "@types/autoprefixer": "9.6.1",
@@ -56,6 +57,10 @@
     "workbox-webpack-plugin": "4.3.1",
     "write-file-webpack-plugin": "4.5.1"
   },
+  "engine": {
+    "node": "10.16.3",
+    "npm": "6.11.2"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -63,12 +68,12 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.ts",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "src/**/*.ts"
     ],
     "moduleNameMapper": {
-      "\\.scss$": "identity-obj-proxy",
-      "\\.elm$": "<rootDir>/mocks/elm.ts"
+      "\\.elm$": "<rootDir>/mocks/elm.ts",
+      "\\.scss$": "identity-obj-proxy"
     },
     "roots": [
       "<rootDir>/tests"
@@ -79,13 +84,13 @@
     }
   },
   "lint-staged": {
-    "**/*.ts": [
-      "npm run prettify:typescript",
-      "git add"
-    ],
     "**/*.elm": [
-      "npm run prettify:elm",
-      "git add"
+      "git add",
+      "npm run prettify:elm"
+    ],
+    "**/*.ts": [
+      "git add",
+      "npm run prettify:typescript"
     ]
   },
   "scripts": {
@@ -97,10 +102,5 @@
     "prettify:typescript": "eslint --fix . --ext .ts",
     "start": "webpack-dev-server --host 0.0.0.0 --port 3000",
     "test": "jest --coverage && elm-test"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
