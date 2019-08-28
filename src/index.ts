@@ -1,8 +1,5 @@
 import "./index.scss";
-import { register } from "./serviceWorker";
 import { Elm } from "./Main.elm";
-
-register();
 
 export const flags = {
   message: "Hello World"
