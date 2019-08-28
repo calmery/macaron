@@ -67,14 +67,14 @@ const common: Configuration = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "build/renderer"),
     filename: NODE_ENV === "production" ? "[contenthash].js" : "index.js"
   },
   plugins: [
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, "src/renderer/assets"),
-        to: path.resolve(__dirname, "build/assets")
+        to: path.resolve(__dirname, "build/renderer/assets")
       }
     ]),
     new HtmlWebpackPlugin({
