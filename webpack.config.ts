@@ -17,7 +17,7 @@ import WriteFileWebpackPlugin from "write-file-webpack-plugin";
 const { NODE_ENV } = process.env;
 
 const common: Configuration = {
-  entry: path.resolve(__dirname, "src/index.ts"),
+  entry: path.resolve(__dirname, "src/renderer/index.ts"),
   module: {
     rules: [
       {
@@ -73,12 +73,12 @@ const common: Configuration = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, "src/assets"),
+        from: path.resolve(__dirname, "src/renderer/assets"),
         to: path.resolve(__dirname, "build/assets")
       }
     ]),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/index.html"),
+      template: path.resolve(__dirname, "src/renderer/index.html"),
       minify: {
         collapseWhitespace: NODE_ENV === "production"
       }
