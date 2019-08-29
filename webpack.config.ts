@@ -14,18 +14,61 @@ import {
 import merge from "webpack-merge";
 import WriteFileWebpackPlugin from "write-file-webpack-plugin";
 
-const { NODE_ENV } = process.env;
+const isProduction = process.env.NODE_ENV === "production";
 
 const common: Configuration = {
+  mode: isProduction ? "production" : "development",
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: "ts-loader"
+      }
+    ]
+  },
+  plugins: [
+    new DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(isProduction ? "production" : "development")
+      }
+    })
+  ],
+  resolve: {
+    extensions: [".ts", ".js"]
+  }
+};
+
+const main: Configuration = merge(common, {
+  entry: path.resolve(__dirname, "src/main/index.ts"),
+  node: {
+    __dirname: false
+  },
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname, "build/main")
+  },
+  target: "electron-main"
+});
+
+const renderer: Configuration = merge(common, {
   entry: path.resolve(__dirname, "src/renderer/index.ts"),
   module: {
     rules: [
       {
+        test: /\.elm$/,
+        exclude: [/elm-stuff/, /node_modules/],
+        use: {
+          loader: "elm-webpack-loader",
+          options: {
+            optimize: isProduction,
+            verbose: true
+          }
+        }
+      },
+      {
         test: /\.scss$/,
         loader: [
-          NODE_ENV === "production"
-            ? MiniCssExtractPlugin.loader
-            : "style-loader",
+          isProduction ? MiniCssExtractPlugin.loader : "style-loader",
           {
             loader: "css-loader",
             options: {
@@ -47,28 +90,12 @@ const common: Configuration = {
             }
           }
         ]
-      },
-      {
-        test: /\.elm$/,
-        exclude: [/elm-stuff/, /node_modules/],
-        use: {
-          loader: "elm-webpack-loader",
-          options: {
-            debug: NODE_ENV !== "production",
-            optimize: NODE_ENV === "production",
-            verbose: true
-          }
-        }
-      },
-      {
-        test: /\.ts$/,
-        loader: "ts-loader"
       }
     ]
   },
   output: {
-    path: path.resolve(__dirname, "build/renderer"),
-    filename: NODE_ENV === "production" ? "[contenthash].js" : "index.js"
+    filename: isProduction ? "[contenthash].js" : "index.js",
+    path: path.resolve(__dirname, "build/renderer")
   },
   plugins: [
     new CopyWebpackPlugin([
@@ -80,30 +107,23 @@ const common: Configuration = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src/renderer/index.html"),
       minify: {
-        collapseWhitespace: NODE_ENV === "production"
+        collapseWhitespace: isProduction
       }
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: "defer"
-    }),
-    new DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(NODE_ENV || "development")
-      }
     })
   ],
-  resolve: {
-    extensions: [".ts", ".js"]
-  }
-};
+  target: "electron-renderer"
+});
 
-const development: Configuration = merge(common, {
+const rendererDevelopment: Configuration = merge(renderer, {
   devtool: "cheap-module-source-map",
   mode: "development",
   plugins: [new HotModuleReplacementPlugin(), new WriteFileWebpackPlugin()]
 });
 
-const production: Configuration = merge(common, {
+const rendererProduction: Configuration = merge(renderer, {
   devtool: "source-map",
   mode: "production",
   optimization: {
@@ -146,6 +166,9 @@ const production: Configuration = merge(common, {
     }
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[contenthash].css"
+    }),
     new OptimizeCSSAssetsPlugin({
       cssProcessorOptions: {
         map: {
@@ -153,11 +176,8 @@ const production: Configuration = merge(common, {
           inline: false
         }
       }
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[contenthash].css"
     })
   ]
 });
 
-export default NODE_ENV === "production" ? production : development;
+export default [main, isProduction ? rendererProduction : rendererDevelopment];
