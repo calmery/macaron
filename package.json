@@ -4,6 +4,9 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "dependencies": {
+    "serve-handler": "6.1.1"
+  },
   "devDependencies": {
     "@types/autoprefixer": "9.6.1",
     "@types/copy-webpack-plugin": "5.0.0",
@@ -13,6 +16,7 @@
     "@types/node": "12.7.2",
     "@types/optimize-css-assets-webpack-plugin": "5.0.0",
     "@types/script-ext-html-webpack-plugin": "2.1.1",
+    "@types/serve-handler": "6.1.0",
     "@types/uglifyjs-webpack-plugin": "1.1.0",
     "@types/webpack-merge": "4.1.5",
     "@typescript-eslint/eslint-plugin": "2.0.0",
@@ -100,7 +104,7 @@
     "prettify": "npm run prettify:typescript && npm run prettify:elm",
     "prettify:elm": "elm-format --yes .",
     "prettify:typescript": "eslint --fix . --ext .ts",
-    "start": "webpack-dev-server --host 0.0.0.0 --port 3000",
+    "start": "webpack --watch",
     "test": "jest --coverage && elm-test"
   }
 }
