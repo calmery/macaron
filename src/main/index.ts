@@ -15,6 +15,7 @@ const address = http
 
 app.on("ready", () => {
   const browserWindow = new BrowserWindow({
+    fullscreen: false,
     width: 800,
     height: 600
   });
