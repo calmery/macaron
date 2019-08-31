@@ -18,7 +18,8 @@ app.on("ready", () => {
     frame: false,
     fullscreen: false,
     width: 800,
-    height: 600
+    height: 600,
+    vibrancy: "appearance-based"
   });
 
   browserWindow.setMinimumSize(400, 236);
