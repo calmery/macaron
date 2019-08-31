@@ -14,7 +14,12 @@ const address = http
   .address();
 
 app.on("ready", () => {
-  const browserWindow = new BrowserWindow();
+  const browserWindow = new BrowserWindow({
+    width: 800,
+    height: 600
+  });
+
+  browserWindow.setMinimumSize(400, 236);
 
   if (address !== null && typeof address !== "string") {
     browserWindow.loadURL(`http://localhost:${(address as AddressInfo).port}`);
