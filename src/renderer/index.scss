@@ -1,4 +1,59 @@
 body {
   padding: 0;
   margin: 0;
+  background: #FFFFFF;
+  user-select: none;
+}
+
+$title-bar-size: 12px;
+$title-bar-padding: 16px;
+
+#title-bar {
+  width: 100%;
+  height: $title-bar-size;
+  padding: $title-bar-padding;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  display: flex;
+  // NOTE: https://electronjs.org/docs/api/frameless-window
+  -webkit-app-region: drag;
+
+  .window-control-button {
+    width: $title-bar-size;
+    height: $title-bar-size;
+    border-radius: 100%;
+    margin-right: 8px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+
+    &.close {
+      background: #FE4C48;
+
+      &:hover {
+        background: #EA3834;
+      }
+    }
+
+    &.dock {
+      background: #FEB53C;
+
+      &:hover {
+        background: #EAA128;
+      }
+    }
+
+    &.scale {
+      background: #2AC145;
+
+      &:hover {
+        background: #16AD31;
+      }
+    }
+  }
+}
+
+#container {
+  margin-top: $title-bar-size + $title-bar-padding * 2;
 }

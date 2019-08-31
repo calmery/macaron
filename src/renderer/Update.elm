@@ -2,6 +2,7 @@ module Update exposing (Msg(..), update)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation exposing (load, pushUrl)
+import Electron.WindowControl exposing (WindowControlAction, windowControl)
 import Model exposing (Model)
 import Route exposing (parseUrl)
 import Url exposing (Url)
@@ -10,6 +11,7 @@ import Url exposing (Url)
 type Msg
     = LinkClicked UrlRequest
     | UrlChanged Url
+    | WindowControl WindowControlAction
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -31,3 +33,6 @@ update msg model =
             ( { model | route = route }
             , Cmd.none
             )
+
+        WindowControl windowControlAction ->
+            ( model, windowControl windowControlAction )
