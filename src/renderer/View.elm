@@ -6,9 +6,9 @@ import Html exposing (Html, div, nav, text)
 import Html.Attributes exposing (class, id)
 import Html.Events exposing (onClick)
 import Model exposing (Model)
-import Pages.Example as Example
+import Pages.All as All
 import Pages.NotFound as NotFound
-import Pages.Top as Top
+import Pages.Today as Today
 import Route exposing (Route(..))
 import Update exposing (Msg(..))
 
@@ -44,11 +44,11 @@ viewPage model =
     case model.route of
         Just route ->
             case route of
-                Top ->
-                    Top.view model
+                Today ->
+                    Today.view model
 
-                Example ->
-                    Example.view model
+                All ->
+                    All.view model
 
         Nothing ->
             NotFound.view

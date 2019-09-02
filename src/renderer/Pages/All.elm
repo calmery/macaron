@@ -1,6 +1,6 @@
-module Pages.Example exposing (view)
+module Pages.All exposing (view)
 
-import Html exposing (Html, a, div, text)
+import Html exposing (Html, a, main_, text)
 import Html.Attributes exposing (href)
 import Model exposing (Model)
 import Update exposing (Msg)
@@ -8,7 +8,7 @@ import Update exposing (Msg)
 
 view : Model -> Html Msg
 view model =
-    div
+    main_
         []
-        [ a [ href "/#/" ] [ text "Go to Top" ]
+        [ a [ href "/#/" ] [ text "Today" ]
         ]

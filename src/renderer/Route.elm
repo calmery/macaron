@@ -14,13 +14,13 @@ parseUrl =
 
 
 type Route
-    = Top
-    | Example
+    = Today
+    | All
 
 
 route : Parser (Route -> Route) Route
 route =
     oneOf
-        [ map Top top
-        , map Example (s "example")
+        [ map Today top
+        , map All (s "all")
         ]
