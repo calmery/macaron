@@ -2,8 +2,8 @@ module View exposing (view)
 
 import Browser exposing (Document)
 import Electron.WindowControl exposing (WindowControlAction(..))
-import Html exposing (Html, div, nav, text)
-import Html.Attributes exposing (class, id)
+import Html exposing (Html, a, div, nav, span, text)
+import Html.Attributes exposing (class, href, id)
 import Html.Events exposing (onClick)
 import Model exposing (Model)
 import Pages.All as All
@@ -36,7 +36,28 @@ titleBar =
 
 navigation : Model -> Html Msg
 navigation model =
-    nav [] []
+    nav
+        []
+        [ menu (model.route == Just Today) "/#/" "e" "Today"
+        , menu (model.route == Just All) "/#/all" "d" "All"
+        ]
+
+
+menu active url icon string =
+    a [ href url ]
+        [ div
+            [ class
+                ("menu"
+                    ++ (if active then
+                            " active"
+
+                        else
+                            ""
+                       )
+                )
+            ]
+            [ span [] [ text icon ], text string ]
+        ]
 
 
 viewPage : Model -> Html Msg

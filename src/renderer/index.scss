@@ -1,8 +1,14 @@
 body {
   padding: 0;
   margin: 0;
+  color: #3C3C3C;
   background: #FFFFFF;
   user-select: none;
+}
+
+a {
+  color: #3C3C3C;
+  text-decoration: none;
 }
 
 $title-bar-size: 12px;
@@ -67,6 +73,30 @@ nav {
   bottom: 0;
   left: 0;
   background: #F5F5F5;
+
+  a {
+    .menu {
+      padding: 8px;
+      font-weight: bold;
+      font-size: 10px;
+      margin-top: 8px;
+      line-height: 12px;
+      border-radius: 4px;
+
+      &.active {
+        background: #EBEBEB;
+      }
+
+      span {
+        font-family: CONDENSEicon;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  a:first-child .menu {
+    margin-top: 0;
+  }
 }
 
 main {
