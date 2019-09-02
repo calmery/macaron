@@ -2,7 +2,7 @@ module View exposing (view)
 
 import Browser exposing (Document)
 import Electron.WindowControl exposing (WindowControlAction(..))
-import Html exposing (Html, div, text)
+import Html exposing (Html, div, nav, text)
 import Html.Attributes exposing (class, id)
 import Html.Events exposing (onClick)
 import Model exposing (Model)
@@ -18,7 +18,8 @@ view model =
     { title = "Elm App"
     , body =
         [ titleBar
-        , container <| viewPage model
+        , navigation model
+        , viewPage model
         ]
     }
 
@@ -33,9 +34,9 @@ titleBar =
         ]
 
 
-container : Html Msg -> Html Msg
-container html =
-    div [ id "container" ] [ html ]
+navigation : Model -> Html Msg
+navigation model =
+    nav [] []
 
 
 viewPage : Model -> Html Msg

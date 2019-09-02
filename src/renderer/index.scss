@@ -17,6 +17,7 @@ $title-bar-padding: 16px;
   right: 0;
   position: fixed;
   display: flex;
+  z-index: 2147483647;
   // NOTE: https://electronjs.org/docs/api/frameless-window
   -webkit-app-region: drag;
 
@@ -54,6 +55,27 @@ $title-bar-padding: 16px;
   }
 }
 
-#container {
-  margin-top: $title-bar-size + $title-bar-padding * 2;
+nav {
+  width: calc(200px - 32px);
+  height: calc(100vh - #{$title-bar-size + $title-bar-padding} + 24px + 24px);
+  padding-top: $title-bar-size + $title-bar-padding + 24px;
+  padding-bottom: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: #F5F5F5;
+}
+
+main {
+  width: calc(100vw - 200px - 32px);
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding-top: $title-bar-size + $title-bar-padding + 24px;
+  padding-bottom: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
