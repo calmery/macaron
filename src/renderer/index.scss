@@ -109,4 +109,85 @@ main {
   padding-bottom: 24px;
   padding-left: 16px;
   padding-right: 16px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    padding: 0;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 21px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .partition {
+    margin-top: 24px;
+  }
+
+  .header {
+    display: flex;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #F5F5F5;
+
+    .toggle {
+      margin-right: 8px;
+      font-size: 10px;
+      line-height: 21px;
+      font-family: CONDENSEicon;
+      cursor: pointer;
+    }
+  }
+
+  .todo {
+    padding: 8px;
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 12px;
+    user-select: text;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+
+    &.done {
+      .strike {
+        width: calc(100% - 16px);
+        height: 1px;
+        background: #3C3C3C;
+        top: 50%;
+        position: absolute;
+        margin-top: -0.5px;
+      }
+
+      .warning, .priority {
+        display: none;
+      }
+    }
+
+    &.expired {
+      .warning {
+        color: #FE4C48;
+        margin-right: 8px;
+      }
+    }
+
+    .text {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: pre;
+      margin-right: 8px;
+    }
+
+    .priority {
+      font-family: CONDENSEicon;
+      font-weight: normal;
+      margin-left: auto;
+    }
+  }
 }
