@@ -16,6 +16,7 @@ parseUrl =
 type Route
     = Today
     | All
+    | Trash
 
 
 route : Parser (Route -> Route) Route
@@ -23,4 +24,5 @@ route =
     oneOf
         [ map Today top
         , map All (s "all")
+        , map Trash (s "trash")
         ]

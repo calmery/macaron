@@ -9,6 +9,7 @@ import Model exposing (Model)
 import Pages.All as All
 import Pages.NotFound as NotFound
 import Pages.Today as Today
+import Pages.Trash as Trash
 import Route exposing (Route(..))
 import Update exposing (Msg(..))
 
@@ -40,7 +41,13 @@ navigation model =
         []
         [ menu (model.route == Just Today) "/#/" "e" "Today"
         , menu (model.route == Just All) "/#/all" "d" "All"
+        , separater
+        , menu (model.route == Just Trash) "/#/trash" "l" "Trash"
         ]
+
+
+separater =
+    div [ class "separater" ] []
 
 
 menu active url icon string =
@@ -70,6 +77,9 @@ viewPage model =
 
                 All ->
                     All.view model
+
+                Trash ->
+                    Trash.view model
 
         Nothing ->
             NotFound.view
