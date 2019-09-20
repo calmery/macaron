@@ -12,6 +12,7 @@ type Msg
     = LinkClicked UrlRequest
     | UrlChanged Url
     | WindowControl WindowControlAction
+    | MenuToggle
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -36,3 +37,6 @@ update msg model =
 
         WindowControl windowControlAction ->
             ( model, windowControl windowControlAction )
+
+        MenuToggle ->
+            ( { model | menuIsOpen = not model.menuIsOpen }, Cmd.none )

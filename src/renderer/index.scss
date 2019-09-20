@@ -60,6 +60,29 @@ $title-bar-padding: 16px;
       }
     }
   }
+
+  .menu-control-button {
+    color: #787878;
+    font-size: 12px;
+    line-height: 12px;
+    display: flex;
+
+    .icon {
+      font-family: CONDENSEicon;
+      cursor: pointer;
+      margin-left: 96px;
+
+      &:before {
+        content: "ù";
+      }
+    }
+
+    .text {
+      margin-left: 8px;
+      font-weight: bold;
+      display: none;
+    }
+  }
 }
 
 nav {
@@ -221,6 +244,22 @@ main {
 }
 
 .menu-hidden {
+  #title-bar {
+    .menu-control-button {
+      .icon {
+        margin-left: 0;
+
+        &:before {
+          content: "ú";
+        }
+      }
+
+      .text {
+        display: block;
+      }
+    }
+  }
+
   nav {
     display: none;
   }

@@ -18,9 +18,17 @@ view : Model -> Document Msg
 view model =
     { title = "Elm App"
     , body =
-        [ titleBar
-        , div [ class "menu-hidden" ]
-            [ navigation model
+        [ div
+            [ class
+                (if model.menuIsOpen then
+                    ""
+
+                 else
+                    "menu-hidden"
+                )
+            ]
+            [ titleBar
+            , navigation model
             , viewPage model
             ]
         ]
@@ -34,6 +42,13 @@ titleBar =
         [ div [ class "window-control-button close", onClick <| WindowControl Close ] []
         , div [ class "window-control-button dock", onClick <| WindowControl Dock ] []
         , div [ class "window-control-button scale", onClick <| WindowControl Scale ] []
+        , div [ class "menu-control-button", onClick MenuToggle ]
+            [ div [ class "icon" ]
+                []
+            , div
+                [ class "text" ]
+                [ text "Today" ]
+            ]
         ]
 
 
