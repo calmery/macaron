@@ -12,7 +12,7 @@ view model =
         [ h1
             []
             [ text "Today" ]
-        , div [ class "partition" ]
+        , div [ class "container" ]
             [ div [ class "header" ]
                 [ div [ class "toggle" ] [ text "û" ]
                 , h2
@@ -41,7 +41,7 @@ view model =
                 , div [ class "priority" ] [ text "è" ]
                 ]
             ]
-        , div [ class "partition" ]
+        , div [ class "container" ]
             [ div [ class "header" ]
                 [ div [ class "toggle" ] [ text "û" ]
                 , h2
@@ -56,7 +56,7 @@ view model =
                 , div [ class "priority" ] [ text "è" ]
                 ]
             ]
-        , div [ class "partition" ]
+        , div [ class "container" ]
             [ div [ class "header" ]
                 [ div [ class "toggle" ] [ text "û" ]
                 , h2
