@@ -193,10 +193,15 @@ main {
       }
     }
 
+    .warning {
+      display: none;
+    }
+
     &.expired {
       .warning {
         color: #FE4C48;
         margin-right: 8px;
+        display: block;
       }
     }
 
