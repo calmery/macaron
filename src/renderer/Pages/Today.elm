@@ -12,9 +12,9 @@ view model =
         [ h1
             []
             [ text "Today" ]
-        , div [ class "container" ]
+        , div [ class "container hidden" ]
             [ div [ class "header" ]
-                [ div [ class "toggle" ] [ text "û" ]
+                [ div [ class "toggle" ] []
                 , h2
                     []
                     [ text "Ready" ]
@@ -43,7 +43,7 @@ view model =
             ]
         , div [ class "container" ]
             [ div [ class "header" ]
-                [ div [ class "toggle" ] [ text "û" ]
+                [ div [ class "toggle" ] []
                 , h2
                     []
                     [ text "Doing" ]
@@ -58,7 +58,7 @@ view model =
             ]
         , div [ class "container" ]
             [ div [ class "header" ]
-                [ div [ class "toggle" ] [ text "û" ]
+                [ div [ class "toggle" ] []
                 , h2
                     []
                     [ text "Done" ]
