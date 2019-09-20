@@ -26,7 +26,7 @@ app.on("ready", () => {
     }
   });
 
-  browserWindow.setMinimumSize(400, 236);
+  browserWindow.setMinimumSize(400, 248);
 
   ipcMain.on(
     IPC_WINDOW_CONTROL,
