@@ -19,8 +19,10 @@ view model =
     { title = "Elm App"
     , body =
         [ titleBar
-        , navigation model
-        , viewPage model
+        , div [ class "menu-hidden" ]
+            [ navigation model
+            , viewPage model
+            ]
         ]
     }
 

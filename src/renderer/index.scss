@@ -219,3 +219,14 @@ main {
     }
   }
 }
+
+.menu-hidden {
+  nav {
+    display: none;
+  }
+
+  main {
+    width: auto;
+    position: static;
+  }
+}
