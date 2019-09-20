@@ -10,7 +10,7 @@ initialModel environmentVariables key route =
     { environmentVariables = environmentVariables
     , key = key
     , route = route
-    , menuIsOpen = True
+    , ui = { menuIsOpen = True }
     }
 
 
@@ -18,5 +18,7 @@ type alias Model =
     { environmentVariables : EnvironmentVariables
     , key : Key
     , route : Maybe Route
-    , menuIsOpen : Bool
+    , ui :
+        { menuIsOpen : Bool
+        }
     }

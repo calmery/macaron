@@ -20,7 +20,7 @@ view model =
     , body =
         [ div
             [ class
-                (if model.menuIsOpen then
+                (if model.ui.menuIsOpen then
                     ""
 
                  else

@@ -39,4 +39,11 @@ update msg model =
             ( model, windowControl windowControlAction )
 
         MenuToggle ->
-            ( { model | menuIsOpen = not model.menuIsOpen }, Cmd.none )
+            let
+                ui =
+                    model.ui
+
+                updatedUiModel =
+                    { ui | menuIsOpen = not model.ui.menuIsOpen }
+            in
+            ( { model | ui = updatedUiModel }, Cmd.none )
