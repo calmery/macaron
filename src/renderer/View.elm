@@ -43,6 +43,7 @@ navigation model =
         , menu (model.route == Just All) "/#/all" "d" "All"
         , separater
         , menu (model.route == Just Trash) "/#/trash" "l" "Trash"
+        , addTodo
         ]
 
 
@@ -65,6 +66,13 @@ menu active url icon string =
             ]
             [ span [] [ text icon ], text string ]
         ]
+
+
+addTodo : Html Msg
+addTodo =
+    div
+        [ class "menu add-task" ]
+        [ span [] [ text "ï" ], text "Add Task" ]
 
 
 viewPage : Model -> Html Msg

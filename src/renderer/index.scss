@@ -64,7 +64,7 @@ $title-bar-padding: 16px;
 
 nav {
   width: calc(200px - 32px);
-  height: calc(100vh - #{$title-bar-size + $title-bar-padding} + 24px + 24px);
+  height: calc(100vh - #{$title-bar-size + $title-bar-padding} - 24px - 24px);
   padding-top: $title-bar-size + $title-bar-padding + 24px;
   padding-bottom: 24px;
   padding-left: 16px;
@@ -75,23 +75,28 @@ nav {
   left: 0;
   background: #F5F5F5;
 
-  a {
-    .menu {
-      padding: 8px;
-      font-weight: bold;
-      font-size: 10px;
-      margin-top: 8px;
-      line-height: 12px;
-      border-radius: 4px;
+  .menu {
+    padding: 8px;
+    font-weight: bold;
+    font-size: 10px;
+    margin-top: 8px;
+    line-height: 12px;
+    border-radius: 4px;
+    cursor: pointer;
 
-      &.active {
-        background: #EBEBEB;
-      }
+    &.active, &:hover {
+      background: #EBEBEB;
+    }
 
-      span {
-        font-family: CONDENSEicon;
-        margin-right: 8px;
-      }
+    span {
+      font-family: CONDENSEicon;
+      margin-right: 8px;
+    }
+
+    &.add-task {
+      width: calc(100% - 32px - 16px);
+      bottom: 24px;
+      position: absolute;
     }
   }
 
