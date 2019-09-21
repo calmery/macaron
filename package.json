@@ -23,6 +23,7 @@
     }
   },
   "dependencies": {
+    "@ionic/core": "^4.9.1",
     "serve-handler": "6.1.1"
   },
   "devDependencies": {
