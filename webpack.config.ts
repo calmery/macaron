@@ -66,7 +66,7 @@ const renderer: Configuration = merge(common, {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         loader: [
           isProduction ? MiniCssExtractPlugin.loader : "style-loader",
           {
