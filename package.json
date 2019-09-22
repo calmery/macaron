@@ -97,7 +97,7 @@
     ],
     "moduleNameMapper": {
       "\\.elm$": "<rootDir>/mocks/elm.ts",
-      "\\.scss$": "identity-obj-proxy"
+      "\\.s?css$": "identity-obj-proxy"
     },
     "roots": [
       "<rootDir>/tests"
